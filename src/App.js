@@ -16,7 +16,7 @@ class App extends Component {
     return (beer) => {
       let newBeer = beer;
       delete newBeer.weightValue;
-      newBeer.weightValue = func(beer);
+      newBeer = func(beer);
       return newBeer;
     }
   }
@@ -29,9 +29,9 @@ class App extends Component {
     console.log(weightedList);
     weightedList.sort(function(a, b) {
       if(a.weightValue < b.weightValue) {
-        return -1;
-      } else if(a.weightValue > b.weightValue) {
         return 1;
+      } else if(a.weightValue > b.weightValue) {
+        return -1;
       }
       return 0;
     })

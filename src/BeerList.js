@@ -4,6 +4,7 @@ class BeerList extends Component {
   static ABVDFilter = () => {
     return (beer) => {
       return {
+        ...beer,
         weightValue: (beer['Units per 100ml']/parseFloat(beer['Price']))
       }
     }
