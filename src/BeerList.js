@@ -16,7 +16,7 @@ class BeerList extends Component {
         {
           this.props.beers.filter((beer, index) => {
             let beerString = `${beer['Description']}, served as ${beer['Quantity']} ${beer['Quantity Units']} for ${beer['Price']} and ABV ${beer['ABV']}%`;
-            return (beerString.toLowerCase().includes(this.props.query))
+            return (beerString.toLowerCase().includes(this.props.query.toLowerCase()))
             }).map((beer, index) => {
             return (
               <li key={index} className='contact-list-item'>
