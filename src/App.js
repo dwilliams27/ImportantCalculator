@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ABVS from './datasets/abvs.json';
 import PRICES from './datasets/prices.json';
-import MERGED from './datasets/mergedDataset1_70.json';
+import MERGED from './datasets/mergedDataset2_90.json';
 import BeerList from './BeerList.js'
 
 class App extends Component {
@@ -71,7 +71,7 @@ class App extends Component {
           best = confidence;
         }
       }
-      if(best > 0.7) {
+      if(best > 0.9) {
         merged.push(mostConfident);
       }
     })
@@ -94,7 +94,7 @@ class App extends Component {
         <button onClick={this.doABVDFilter}>DO ABV FILTER</button>
         <input type="text" placeholder="Search..." onChange={this.handleSearchChange} />
         <BeerList query={this.state.query} buildFilter={this.buildFilter} applyFilter={this.applyFilter} beers={this.state.workingList}/>
-        <button disabled={true} onClick={this.mergeDatasets}>MERGE DATASETS</button>
+        <button disabled={false} onClick={this.mergeDatasets}>MERGE DATASETS</button>
       </div>);
   }
 }

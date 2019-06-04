@@ -5,7 +5,7 @@ class BeerList extends Component {
     return (beer) => {
       return {
         ...beer,
-        weightValue: (beer['Units per 100ml']/parseFloat(beer['Price'])).toFixed(5)
+        weightValue: parseFloat(beer['Units per 100ml']/parseFloat(beer['Price'])).toFixed(1)
       }
     }
   }
@@ -20,7 +20,7 @@ class BeerList extends Component {
             }).map((beer, index) => {
             return (
               <li key={index} className='contact-list-item'>
-                <p1>{`${beer['Description']}, served as ${beer['Quantity']} ${beer['Quantity Units']} for ${beer['Price']} and ABV ${beer['ABV']}%`}</p1>
+                <p1>{`${beer['Description']}, served as ${beer['Quantity']} ${beer['Quantity Units']} for ${beer['Price']} and ABV ${beer['Units per 100ml']*100}%`}</p1>
                 <h2>{`Score: ${beer['Units per 100ml']/parseFloat(beer['Price'])}`}</h2>
               </li>
             );
