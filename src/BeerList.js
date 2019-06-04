@@ -5,7 +5,7 @@ class BeerList extends Component {
     return (beer) => {
       return {
         ...beer,
-        weightValue: (beer['Units per 100ml']/parseFloat(beer['Price']))
+        weightValue: (beer['Units per 100ml']/parseFloat(beer['Price'])).toFixed(5)
       }
     }
   }
@@ -14,7 +14,10 @@ class BeerList extends Component {
     return (
       <ol className='contact-list'>
         {
-          this.props.beers.map((beer, index) => {
+          this.props.beers.filter((beer, index) => {
+            let beerString = `${beer['Description']}, served as ${beer['Quantity']} ${beer['Quantity Units']} for ${beer['Price']} and ABV ${beer['ABV']}%`;
+            return (beerString.toLowerCase().includes(this.props.query))
+            }).map((beer, index) => {
             return (
               <li key={index} className='contact-list-item'>
                 <p1>{`${beer['Description']}, served as ${beer['Quantity']} ${beer['Quantity Units']} for ${beer['Price']} and ABV ${beer['ABV']}%`}</p1>

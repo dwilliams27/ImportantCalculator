@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      workingList: MERGED
+      workingList: MERGED,
+      query: ''
     }
   }
 
@@ -81,11 +82,18 @@ class App extends Component {
     this.applyFilter(this.buildFilter(BeerList.ABVDFilter()));
   }
 
+  handleSearchChange = (event) => {
+    this.setState({
+      query: event.target.value
+    })
+  }
+
   render() {
     return (
       <div>
         <button onClick={this.doABVDFilter}>DO ABV FILTER</button>
-        <BeerList buildFilter={this.buildFilter} applyFilter={this.applyFilter} beers={this.state.workingList}/>
+        <input type="text" placeholder="Search..." onChange={this.handleSearchChange} />
+        <BeerList query={this.state.query} buildFilter={this.buildFilter} applyFilter={this.applyFilter} beers={this.state.workingList}/>
         <button disabled={true} onClick={this.mergeDatasets}>MERGE DATASETS</button>
       </div>);
   }
