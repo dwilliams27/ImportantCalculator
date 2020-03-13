@@ -1,0 +1,7 @@
+sudo yum install git
+git clone https://github.com/dwilliams27/ImportantCalculator.git
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install nodejs
+cd ImportantCalculator/
+npm i
+npm start
